@@ -1,86 +1,95 @@
+/* --- RESET BÁSICO --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    background-color: #000;
-    color: #ffffff;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    overflow: hidden; /* Evita que aparezcan barras de desplazamiento */
-}
-
-/* Configuramos el video para que sea el fondo absoluto */
-#contenedor-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1; /* ¡Capa ajustada hacia adelante! */
-    background-color: #000; 
-}
-
-#video-fondo {
+body, html {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Asegura que el video cubra toda la pantalla sin achatarse */
+    overflow: hidden; /* Evita barras de desplazamiento */
+    background-color: #000000;
 }
 
-/* Centramos el contenido de las capas superiores (botón y textos) */
-.capa-superior {
+/* --- CLASE MAESTRA PARA OCULTAR --- */
+.oculto {
+    display: none !important;
+}
+
+/* --- PANTALLA DE INICIO (BOTÓN) --- */
+#pantalla-inicio {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    background-color: #000000;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    transition: opacity 1.5s ease;
-    z-index: 10; /* ¡Textos y botón por encima de todo! */
+    z-index: 30; /* Capa intermedia, encima del video */
 }
 
-/* Diseño del botón de inicio */
 #btn-iniciar {
-    padding: 15px 40px;
+    padding: 15px 35px;
     font-size: 1.2rem;
-    letter-spacing: 2px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: 1px solid #fff;
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #ffffff;
     cursor: pointer;
+    font-family: sans-serif;
     text-transform: uppercase;
+    letter-spacing: 2px;
     transition: all 0.3s ease;
 }
 
 #btn-iniciar:hover {
-    background-color: #fff;
-    color: #000;
+    background-color: #ffffff;
+    color: #000000;
 }
 
-/* Clase para ocultar elementos visualmente */
-.oculto {
-    opacity: 0;
-    pointer-events: none;
+/* --- VIDEO DE FONDO --- */
+#video-fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Asegura que el video ocupe toda la pantalla sin deformarse */
+    z-index: 10; /* La capa más baja, siempre al fondo */
 }
 
-/* Diseño de la marca y el eslogan */
-#texto-marca h1 {
-    font-size: 5rem;
-    letter-spacing: 8px;
+/* --- PANTALLA FINAL (EN CONSTRUCCIÓN) --- */
+#pantalla-final {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 50; /* La capa más alta, cubre todo absolutamente */
+}
+
+/* Animación sutil para el engranaje */
+.icono-engranaje {
+    animation: rotarEngranaje 8s linear infinite;
+}
+
+@keyframes rotarEngranaje {
+    100% { transform: rotate(360deg); }
+}
+
+.texto-construccion {
+    margin-top: 25px;
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    font-weight: 700;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.7); /* Sombra para resaltar sobre el video */
-}
-
-#texto-marca p {
-    font-size: 1.5rem;
+    color: #ffffff;
     font-weight: 300;
-    margin-top: 15px;
-    letter-spacing: 3px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
 }
